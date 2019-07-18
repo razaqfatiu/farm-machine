@@ -1,4 +1,4 @@
-port = process.env.port || 2222
+PORT = process.env.PORT || 2222
 const express = require('express');
 
 const app = express()
@@ -10,6 +10,6 @@ app.get('/', (req, res) => {
     res.sendFile('index.html')
 });
 
-app.listen(port, () => {
-    console.log(`Server started on ${port}`);
+app.listen(PORT, () => {
+    console.log(`Server started on ${PORT}`);
 });
