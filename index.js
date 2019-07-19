@@ -1,15 +1,13 @@
-PORT = process.env.PORT || 2222
-const express = require('express');
+const env = require('dotenv').config()
+env
+const jsonServer = require('json-server');
+const server = jsonServer.create();
+const router = jsonServer.router('db.json');
+const middlewares = jsonServer.defaults();
 
-const app = express()
+const port = process.env.PORT || 2222;
+const host = process.env.HOST || 'localhost'
+const url = `${host}:${port}/tools`
 
-app.use(express.static('public'));
-app.use(express.static('public/admin'))
-
-app.get('/', (req, res) => {
-    res.sendFile('index.html')
-});
-
-app.listen(PORT, () => {
-    console.log(`Server started on ${PORT}`);
-});
+server.listen(port);
+exports = env

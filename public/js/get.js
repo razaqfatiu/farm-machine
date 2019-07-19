@@ -1,14 +1,15 @@
+// requirejs()
 $(function () {
   // const main = document.querySelector("#main")
   const upd = (a) => {
     console.log(a.id);
   }
-  fetch('http://localhost:3000/tools')
+  fetch(`https://api.myjson.com/bins/13mamp`)
     .then(response => response.json())
     .then(res => {
       console.log(res)
-      return res.map(item => {
-        
+      return res.tools.map(item => {
+        console.log(item);
         return $("#main").append(
           `<div class="card submain p-5" style="width: 18rem;" id="">
             <img src=${item.image} id="img" class="card-img-top" alt="..." width="100%" height="80%">

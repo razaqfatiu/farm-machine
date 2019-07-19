@@ -1,13 +1,16 @@
 
-    // $(function () {
+
+$(function () {
     // const main = document.querySelector("#main")
+// http://localhost:2000/tools
 
-
-    fetch('http://localhost:3000/tools')
-      .then(response => response.json())
+    fetch('https://api.myjson.com/bins/13mamp')
+      .then(response => {
+        console.log('connecting......');
+        return response.json()})
       .then(res => {
-        return res.map((item) => {
-          console.log(item.id);
+        console.log(res.tools);
+        return res.tools.map((item) => {
           return $("#main").append(
             `<div class="card  p-5 submain" style="width: 18rem;" id=${item.id} data-myd=${item.id}>
               <img src=${item.image} id="img" class="card-img-top" alt="..." width="100%" height="80%">
@@ -44,4 +47,4 @@
     //               console.log("document.querySelector('.subclass').id");
 
     //     })
-    // }
+    })

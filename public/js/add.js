@@ -16,18 +16,34 @@ btn.addEventListener('click', (e) => {
        des: des.value,
        image: image.value
     }
-    console.log(newAdd);
-    return fetch('http://localhost:3000/tools',{
-        method: "post",
-        headers: {
-            'Content-Type': 'application/json',
-            // 'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: JSON.stringify(newAdd) // body data type must match "Content-Type" header
+    // console.log(newAdd);
+    // return fetch('https://api.myjson.com/bins/13mamp',{
+    //     method: "post",
+    //     contentType:"application/json; charset=utf-8",
+    //     dataType:"json",
+ 
+    //     // headers: {
+    //     //     'Content-Type': 'application/json',
+    //     //     // 'Content-Type': 'application/x-www-form-urlencoded',
+    //     // },
+    //     body: JSON.stringify(newAdd) // body data type must match "Content-Type" header
 
-    }).then(res =>  {
-        // console.log( res.json());
-        return res.json()
-    })
+    // }).then(res =>  {
+    //     // console.log( res.json());
+    //     return res.json()
+    // })
     
+
+    const data = JSON.stringify(newAdd)
+
+    $.ajax({
+        url:"https://api.myjson.com/bins/13mamp",
+        type:"POST",
+        data: data,
+        contentType:"application/json; charset=utf-8",
+        dataType:"json",
+        success: function(data, textStatus, jqXHR){
+            console.log(data);
+        }
+    })
 })
